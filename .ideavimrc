@@ -1,0 +1,47 @@
+source ~/.vimrc.local
+
+set number
+
+inoremap jk <ESC>
+cnoremap jk <ESC>
+vnoremap jk <ESC>
+inoremap kj <C-c>
+cnoremap kj <C-c>
+vnoremap kj <C-c>
+
+inoremap zd <C-d>
+cnoremap zd <C-d>
+inoremap zh <C-h>
+cnoremap zh <C-h>
+inoremap zj <C-j>
+cnoremap zj <C-j>
+inoremap zn <C-n>
+cnoremap zn <C-n>
+inoremap zo <C-o>
+cnoremap zo <C-o>
+inoremap zp <C-p>
+cnoremap zp <C-p>
+inoremap zr <C-r>
+cnoremap zr <C-r>
+inoremap zt <C-t>
+cnoremap zt <C-t>
+inoremap zu <C-u>
+cnoremap zu <C-u>
+inoremap zw <C-w>
+cnoremap zw <C-w>
+
+" provide hjkl movements in Insert mode and Command-line mode via the <x> key
+inoremap xh <Left>
+inoremap xj <Down>
+inoremap xk <Up>
+inoremap xl <Right>
+cnoremap xh <Left>
+cnoremap xj <Down>
+cnoremap xk <Up>
+cnoremap xl <Right>
+
+inoremap ;a <Esc>$a
+
+nmap / /
+nmap ? ?
+nmap <Space> \
