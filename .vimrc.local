@@ -1,0 +1,235 @@
+" Use ~x on an English Windows version or ~n for French.
+au GUIEnter * simalt ~x
+au FocusLost * silent! wa
+
+colorscheme obsidian2
+set guifont=Consolas:h14:cDEFAULT
+set guioptions-=m
+set guioptions-=T
+set guioptions-=r
+set timeoutlen=500
+
+set nocompatible
+set modelines=0
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set encoding=utf-8
+set scrolloff=999
+set relativenumber
+set visualbell
+set noerrorbells
+set noswapfile
+set autoindent
+set showmode
+set showcmd
+set hidden
+set wildmenu
+set wildmode=list:longest
+set ttyfast
+set ruler
+set backspace=indent,eol,start
+set laststatus=2
+set undofile
+set autowriteall
+
+let mapleader = " "
+
+nnoremap <Leader>w :w<CR>
+inoremap <leader>w <C-c>:w<CR>
+nnoremap <Leader>q :q<CR>
+nnoremap <Leader>z ZZ
+
+map <Leader>s <Plug>(easymotion-s2)
+nnoremap S :w!<CR>
+
+nnoremap / /\v
+vnoremap / /\v
+nnoremap ? ?\v
+vnoremap ? ?\v
+
+set ignorecase
+set smartcase
+set gdefault
+set incsearch
+set showmatch
+set hlsearch
+
+vnoremap > >gv
+vnoremap < <gv
+
+nnoremap <Tab> >>_
+nnoremap <S-Tab> <<_
+inoremap <S-Tab> <C-D>
+vnoremap <Tab> >gv
+vnoremap <S-Tab> <gv
+
+""Copy & paste to system clipboard
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+vnoremap <silent> y y`]
+vnoremap <silent> p p`]
+nnoremap <silent> p p`]
+
+noremap <Up> ddkP
+noremap <Down> ddp
+noremap <Left> :bn<CR>
+noremap <Right> :bp<CR>
+
+nnoremap j jzz
+nnoremap k kzz
+
+nnoremap B ^
+nnoremap E $
+vnoremap B ^
+vnoremap E $
+
+nnoremap gV `[v`]
+
+nnoremap gb <C-O>
+
+noremap jk <ESC>
+noremap! jk <ESC>
+noremap kj <C-c>
+noremap! kj <C-c>
+
+noremap! zd <C-d>
+noremap! zh <C-h>
+noremap! zj <C-j>
+noremap! zn <C-n>
+noremap! zo <C-o>
+noremap! zp <C-r><C-p>
+noremap! zr <C-r>
+noremap! zt <C-t>
+noremap! zu <C-u>
+noremap! zw <C-w>
+
+" provide hjkl movements in Insert mode and Command-line mode via the <x> key
+noremap! xh <Left>
+noremap! xj <Down>
+noremap! xk <Up>
+noremap! xl <Right>
+
+imap ;a <Esc>$a
+
+noremap bn :bn<CR>
+noremap be :e#<CR>
+
+"custom comma motion mapping
+nmap di, f,dT,
+nmap ci, f,cT,
+nmap da, f,ld2F,i,<ESC>l "delete argument 
+nmap ca, f,ld2F,i,<ESC>a "delete arg and insert
+
+" delete surrounding characters
+noremap ds{ F{xf}x
+noremap cs{ F{xf}xi
+noremap ds" F"x,x
+noremap cs" F"x,xi
+noremap ds' F'x,x
+noremap cs' F'x,xi
+noremap ds( F(xf)x
+noremap cs( F(xf)xi
+noremap ds) F(xf)x
+noremap cs) F(xf)xi
+
+nmap cu ct_
+nmap cU cf_
+
+nnoremap ' `
+nnoremap ` '
+
+nnoremap <silent> <F1> :help normal-index<CR>
+inoremap <silent> <F1> <C-O>:help insert-index<CR>
+vnoremap <silent> <F1> <C-O>:help visual-index<CR>
+
+nnoremap <silent> <BS> :nohlsearch<CR>
+nnoremap <silent> <Leader>n :set relativenumber!<cr>
+
+" clone paragraph
+noremap cp yap<S-}>p
+
+" align paragraph
+noremap <leader>a =ip
+
+" apply macro with Q
+nnoremap Q @q
+vnoremap Q :norm @q<cr>
+
+" Automatically copy Visual selection to clipboard
+set go+=a
+
+map <F12> <Esc>:call libcallnr("gvimfullscreen.dll", "ToggleFullScreen", 0)<CR>
+
+let pairs = { ":" : ":",
+            \ "." : "."}
+for [key, value] in items(pairs)
+    exe "nnoremap ci".key." T".key."ct".value
+    exe "nnoremap ca".key." F".key."cf".value
+    exe "nnoremap di".key." T".key."dt".value
+    exe "nnoremap da".key." F".key."df".value
+    exe "nnoremap vi".key." T".key."vt".value
+    exe "nnoremap va".key." F".key."vf".value
+    exe "nnoremap ci".key." T".key."ct".value
+    exe "nnoremap ci".key." T".key."ct".value
+    exe "nnoremap ya".key." F".key."yf".value
+    exe "nnoremap ya".key." F".key."yf".value
+endfor
+
+onoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR>
+onoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR>
+vnoremap <silent>ai :<C-U>cal <SID>IndTxtObj(0)<CR><Esc>gv
+vnoremap <silent>ii :<C-U>cal <SID>IndTxtObj(1)<CR><Esc>gv
+
+" NERDTree
+map <Leader>t :NERDTreeToggle<CR>
+
+" CtrlP
+nnoremap <Leader>p :CtrlP<CR>
+nnoremap <Leader>o :CtrlPBuffer<CR>
+nnoremap <Leader>r :CtrlPFunky<CR>
+
+function! s:IndTxtObj(inner)
+  let curline = line(".")
+  let lastline = line("$")
+  let i = indent(line(".")) - &shiftwidth * (v:count1 - 1)
+  let i = i < 0 ? 0 : i
+  if getline(".") !~ "^\\s*$"
+    let p = line(".") - 1
+    let nextblank = getline(p) =~ "^\\s*$"
+    while p > 0 && ((i == 0 && !nextblank) || (i > 0 && ((indent(p) >= i && !(nextblank && a:inner)) || (nextblank && !a:inner))))
+      -
+      let p = line(".") - 1
+      let nextblank = getline(p) =~ "^\\s*$"
+    endwhile
+    normal! 0V
+    call cursor(curline, 0)
+    let p = line(".") + 1
+    let nextblank = getline(p) =~ "^\\s*$"
+    while p <= lastline && ((i == 0 && !nextblank) || (i > 0 && ((indent(p) >= i && !(nextblank && a:inner)) || (nextblank && !a:inner))))
+      +
+      let p = line(".") + 1
+      let nextblank = getline(p) =~ "^\\s*$"
+    endwhile
+    normal! $
+  endif
+endfunction
+
+" vp doesn't replace paste buffer
+function! RestoreRegister()
+  let @" = s:restore_reg
+  return ''
+endfunction
+function! s:Repl()
+  let s:restore_reg = @"
+  return "p@=RestoreRegister()\<cr>"
+endfunction
+vmap <silent> <expr> p <sid>Repl()
