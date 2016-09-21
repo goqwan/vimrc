@@ -30,18 +30,47 @@ cnoremap zu <C-u>
 inoremap zw <C-w>
 cnoremap zw <C-w>
 
-" provide hjkl movements in Insert mode and Command-line mode via the <x> key
-inoremap xh <Left>
-inoremap xj <Down>
-inoremap xk <Up>
-inoremap xl <Right>
-cnoremap xh <Left>
-cnoremap xj <Down>
-cnoremap xk <Up>
-cnoremap xl <Right>
+" provide hjkl movements in Insert mode and Command-line mode via the <v> key
+inoremap vh <Left>
+inoremap vj <Down>
+inoremap vk <Up>
+inoremap vl <Right>
+cnoremap vh <Left>
+cnoremap vj <Down>
+cnoremap vk <Up>
+cnoremap vl <Right>
 
 inoremap ;a <Esc>$a
+cnoremap ;a <Esc>$a
+inoremap a; <Esc>$a
+cnoremap a; <Esc>$a
+
+inoremap xb <C-Left>
+cnoremap xb <C-Left>
+inoremap xo <C-o>
+cnoremap xo <C-o>
+inoremap xr <C-r>
+cnoremap xr <C-r>
+inoremap xv <C-r>"
+cnoremap xv <C-r>"
+inoremap xw <C-w>
+cnoremap xw <C-w>
 
 nmap / /
 nmap ? ?
 nmap <Space> \
+
+nnoremap \= :action EditorIncreaseFontSize<CR>
+nnoremap \- :action EditorDecreaseFontSize<CR>
+nnoremap \r :action ReformatCode<CR>
+nnoremap <Space>w :action EditorSelectWord<CR>
+nnoremap <Space>u :action EditorUnSelectWord<CR>
+nnoremap <Space>h :action HideAllWindows<CR>
+nnoremap <Space>c :action $Copy<CR>
+nnoremap <Space>v :action $Paste<CR>
+nnoremap <Space>n :next<CR>
+
+nnoremap gb <C-b>
+nnoremap gf <C-f>
+
+
