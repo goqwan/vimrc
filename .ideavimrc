@@ -1,13 +1,14 @@
 source ~/.vimrc.local
 
+set surround
 set number
 
-inoremap jk <ESC>
-cnoremap jk <ESC>
-vnoremap jk <ESC>
-inoremap kj <C-c>
-cnoremap kj <C-c>
-vnoremap kj <C-c>
+inoremap jk <Esc>
+vnoremap jk <Esc>
+cnoremap jk <Esc>
+inoremap kj <Esc>
+vnoremap kj <Esc>
+cnoremap kj <Esc>
 
 inoremap zd <C-d>
 cnoremap zd <C-d>
@@ -61,7 +62,7 @@ nmap ? ?
 nmap <Space> \
 
 nnoremap \= :action EditorIncreaseFontSize<CR>
-nnoremap \- :action EditorDecreaseFontSize<CR>
+nnoremap \- :action EditorlecreaseFontSize<CR>
 nnoremap \r :action ReformatCode<CR>
 nnoremap <Space>w :action EditorSelectWord<CR>
 nnoremap <Space>u :action EditorUnSelectWord<CR>
@@ -73,4 +74,34 @@ nnoremap <Space>n :next<CR>
 nnoremap gb <C-b>
 nnoremap gf <C-f>
 
+nnoremap <Leader>vs :source ~/.ideavimrc<CR>
 
+" Select all text
+map <Leader>a ggVG
+
+nnoremap U :action $Redo<CR>
+nnoremap / :action Find<CR>
+nnoremap n :action FindNext<CR>
+nnoremap N :action FindPrevious<CR>
+nnoremap g/ /
+nnoremap gn n
+nnoremap gN N
+nnoremap <leader>/ :nohls<CR>
+
+nnoremap <leader>fu :action FindUsages<cr>
+nnoremap <leader>su :action ShowUsages<cr>
+nnoremap <leader>cv :action ChangeView<cr>
+nnoremap <leader>bb :action ToggleLineBreakpoint<cr>
+nnoremap <leader>br :action ViewBreakpoints<cr>
+nnoremap <leader>ic :action InspectCode<cr>
+nnoremap <leader>oi :action OptimizeImports<cr>
+nnoremap <leader>re :action RenameElement<cr>
+nnoremap <leader>rf :action RenameFile<cr>
+nnoremap <leader>dc :action ChooseDebugConfiguration<cr>
+nnoremap <leader>rc :action ChooseRunConfiguration<cr>
+nnoremap <leader>q  :action CloseActiveTab<cr>
+nnoremap <leader>gi :action GotoImplementation<cr>
+nnoremap <leader>gs :action GotoSuperMethod<cr>
+nnoremap <leader>gd :action GotoDeclaration<cr>
+nnoremap <leader>e :action GotoNextError<cr>
+nnoremap <leader>E :action GotoPreviousError<cr>
